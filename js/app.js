@@ -5,7 +5,7 @@
 
 // want to select elements in the DOM 
 var taskInput = document.getElementById('new-task'); // element with ID of #new-task 
-//var addButton; // first button on page 
+var addButton = document.getElementsByTagName('button')[0]; // first button on page 
 var incompleteTasksHolder = document.getElementById('incomplete-tasks'); // ul with ID #incomplete-tasks 
 var completedTasksHolder = document.getElementById('completed-tasks'); // #completed-tasks 
 
