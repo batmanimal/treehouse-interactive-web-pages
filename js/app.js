@@ -11,6 +11,7 @@ var completedTasksHolder = document.getElementById('completed-tasks'); // #compl
 
 // Add new tasks
 var addTask = function(){
+	console.log("Add task..."); // just checking to see that this function is triggered for the right eventHandler
 	// when button is pressed
 	// create new list item with text from #new-task:
 		// input (checkbox)
@@ -24,6 +25,7 @@ var addTask = function(){
 
 // Edit existing tasks 
 var editTask = function(){
+	console.log("Edit task..."); // just checking to see that this function is triggered for the right eventHandler
 	// When Edit button is pressed
 		// IF the parent class is .editMode
 			// switch from .editMode
@@ -36,6 +38,7 @@ var editTask = function(){
 
 // Delete tasks
 var deleteTask = function(){
+	console.log("Delete task..."); // just checking to see that this function is triggered for the right eventHandler
 	// when Delete button is pressed, 
 		// remove parent list item from the unordered list (ul)
 };
@@ -43,6 +46,7 @@ var deleteTask = function(){
 
 // Mark tasks complete  
 var taskCompleted = function(){
+	console.log("Task completed..."); // just checking to see that this function is triggered for the right eventHandler
 	// when checkbox is ticked,
 		// append the task list item to #completed-tasks
 };
@@ -50,8 +54,13 @@ var taskCompleted = function(){
 
 // Mark tasks as incomplete 
 var taskIncomplete = function(){
+	console.log("Task incomplete..."); // just checking to see that this function is triggered for the right eventHandler
 	// when checkbox is UN-ticked,
 		// append the task list item to #incomplete-tasks
 };
+
+// set click handler to addTask function (wiring)
+addButton.onclick = addTask;
+
 
 
