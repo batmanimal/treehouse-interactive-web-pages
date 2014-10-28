@@ -4,10 +4,10 @@
 // Plan! 
 
 // want to select elements in the DOM 
-var taskInput; // element with ID of #new-task 
-var addButton; // first button on page 
-var incompleteTasksHolder; // ul with ID #incomplete-tasks 
-var completedTasksHolder; // #completed-tasks 
+var taskInput = document.getElementById('new-task'); // element with ID of #new-task 
+var addButton = ; // first button on page 
+var incompleteTasksHolder = document.getElementById('incomplete-tasks'); // ul with ID #incomplete-tasks 
+var completedTasksHolder = document.getElementById('completed-tasks'); // #completed-tasks 
 
 // Add new tasks
 var addTask = function(){
