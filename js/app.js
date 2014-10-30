@@ -10,8 +10,8 @@ var incompleteTasksHolder = document.getElementById('incomplete-tasks'); // ul w
 var completedTasksHolder = document.getElementById('completed-tasks'); // #completed-tasks 
 
 // Add new tasks
-var addTask = function(){
-	console.log("Add task..."); // just checking to see that this function is triggered for the right eventHandler
+var addTask = function(){ // these are all event handlers 
+	console.log("Add task..."); // just checking to see that this event handler function is triggered 
 	// when button is pressed
 	// create new list item with text from #new-task:
 		// input (checkbox)
@@ -59,8 +59,23 @@ var taskIncomplete = function(){
 		// append the task list item to #incomplete-tasks
 };
 
-// set click handler to addTask function (wiring)
-addButton.onclick = addTask;
+// set click handler to the addTask function (wiring)
+addButton.onclick = addTask; // the onclick set to addTask - does not call addTask, just a reference. 
+//it will call the function only when the user clicks on the button, not at the onclick assignment    
 
+var bindTaskEvents(taskListItem, checkBoxEventHandler) { // params: the list items of the ul, event handler of the checkbox
+	// select its children
+		// bind editTask to edit button
+		// bind deleteTask to delete button
+		// bind checkBoxEventHandler to checkbox
+};
+ 
+// loop over incompleteTasksHolder ul
+	// for each list item, 
+		// bind events to li children (taskCompleted)
+
+// loop over completedTasksHolder ul
+	// for each list item, 
+		// bind events to li children (taskIncomplete)
 
 
