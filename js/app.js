@@ -63,19 +63,27 @@ var taskIncomplete = function(){
 addButton.onclick = addTask; // the onclick set to addTask - does not call addTask, just a reference. 
 //it will call the function only when the user clicks on the button, not at the onclick assignment    
 
-var bindTaskEvents(taskListItem, checkBoxEventHandler) { // params: the list items of the ul, event handler of the checkbox
-	// select its children
+var bindTaskEvents = function(taskListItem, checkBoxEventHandler) { // params: the list items of the ul, event handler of the checkbox
+	console.log("bind li events"); // log something out to show that this function ran in the loops
+	// select taskListItem's children
+	var checkBox = ;
+	var editButton = ;
+	var deleteButton = ;
 		// bind editTask to edit button
 		// bind deleteTask to delete button
 		// bind checkBoxEventHandler to checkbox
 };
- 
+
 // loop over incompleteTasksHolder ul
-	// for each list item, 
+for (var i = 0; i < incompleteTasksHolder.children.length; i++) {
+	bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
 		// bind events to li children (taskCompleted)
+}
 
 // loop over completedTasksHolder ul
-	// for each list item, 
+for (var i = 0; i < completedTasksHolder.children.length; i++) {
+	bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
 		// bind events to li children (taskIncomplete)
+}
 
 
