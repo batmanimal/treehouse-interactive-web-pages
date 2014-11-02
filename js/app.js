@@ -14,7 +14,8 @@ var addTask = function(){ // these are all event handlers
 	console.log("Add task..."); // just checking to see that this event handler function is triggered 
 	// when button is pressed
 	// create new list item with text from #new-task:
-		// input (checkbox)
+
+	// input (checkbox)
 		// label
 		// input (text)
 		// button.edit
@@ -66,12 +67,15 @@ addButton.onclick = addTask; // the onclick set to addTask - does not call addTa
 var bindTaskEvents = function(taskListItem, checkBoxEventHandler) { // params: the list items of the ul, event handler of the checkbox
 	console.log("bind li events"); // log something out to show that this function ran in the loops
 	// select taskListItem's children
-	var checkBox = ;
-	var editButton = ;
-	var deleteButton = ;
-		// bind editTask to edit button
-		// bind deleteTask to delete button
-		// bind checkBoxEventHandler to checkbox
+	var checkBox = taskListItem.querySelector("input[type=checkbox]");
+	var editButton = taskListItem.querySelector("button.edit");
+	var deleteButton = taskListItem.querySelector("button.delete");
+	// bind editTask to edit button
+	editButton.onclick = editTask;
+	// bind deleteTask to delete button
+	deleteButton.onclick = deleteTask;
+	// bind checkBoxEventHandler to checkbox
+	checkBox.onchange = checkBoxEventHandler; // onchange for spacebar or mouse click
 };
 
 // loop over incompleteTasksHolder ul
