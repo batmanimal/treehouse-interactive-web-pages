@@ -26,6 +26,16 @@ var createNewTaskElement = function(taskString) {
 	var deleteButton = document.createElement('button');
 
 	// each of these elements needs to be modified and appended
+	checkBox.type = "checkbox"; // each element has a type property, refer to style.css 
+	editInput.type = "text"; 
+
+	editButton.innerText = "Edit";  
+	editButton.className = "edit";
+	deleteButton.innerText = "Delete"; 
+	deleteButton.className = "delete";
+
+	label.innerText = taskString;
+
 	listItem.appendChild(checkBox);
 	listItem.appendChild(label);
 	listItem.appendChild(editInput);
@@ -39,9 +49,10 @@ var createNewTaskElement = function(taskString) {
 var addTask = function(){ // these are all event handlers 
 	console.log("Add task..."); // just checking to see that this event handler function is triggered 
 	// create new list item and add it to ul:
-	var listItem = createNewTaskElement('some new task string');
+	var listItem = createNewTaskElement(taskInput.value);
 	// append listItem to incompleteTasksHolder
 	incompleteTasksHolder.appendChild(listItem);
+	bindTaskEvents(listItem, taskCompleted);
 };
 
 
@@ -63,6 +74,9 @@ var deleteTask = function(){
 	console.log("Delete task..."); // just checking to see that this function is triggered for the right eventHandler
 	// when Delete button is pressed, 
 		// remove parent list item from the unordered list (ul)
+	var listItem = this.parentNode;
+	var ul = listItem.parentNode;
+	ul.removeChild(listItem);
 };
 
 
@@ -73,6 +87,7 @@ var taskCompleted = function(){
 		// append the task list item to #completed-tasks
 	var listItem = this.parentNode;
 	completedTasksHolder.appendChild(listItem);
+	bindTaskEvents(listItem, taskIncomplete);
 };
 
 
@@ -83,6 +98,7 @@ var taskIncomplete = function(){
 		// append the task list item to #incomplete-tasks
 	var listItem = this.parentNode;
 	incompleteTasksHolder.appendChild(listItem);
+	bindTaskEvents(listItem, taskCompleted);
 };
 
 // set click handler to the addTask function (wiring)
