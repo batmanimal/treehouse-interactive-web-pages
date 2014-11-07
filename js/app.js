@@ -3,7 +3,7 @@
 
 // Plan! 
 
-// want to select elements in the DOM 
+// Select elements in the DOM 
 var taskInput = document.getElementById('new-task'); // element with ID of #new-task 
 var addButton = document.getElementsByTagName('button')[0]; // first button on page 
 var incompleteTasksHolder = document.getElementById('incomplete-tasks'); // ul with ID #incomplete-tasks 
@@ -43,30 +43,44 @@ var createNewTaskElement = function(taskString) {
 	listItem.appendChild(deleteButton);
 
 	return listItem;
-}
+};
 
 // Add new tasks
 var addTask = function(){ // these are all event handlers 
-	console.log("Add task..."); // just checking to see that this event handler function is triggered 
+	// console.log("Add task..."); // just checking to see that this event handler function is triggered 
 	// create new list item and add it to ul:
 	var listItem = createNewTaskElement(taskInput.value);
 	// append listItem to incompleteTasksHolder
 	incompleteTasksHolder.appendChild(listItem);
 	bindTaskEvents(listItem, taskCompleted);
+	// change input value to blank string to clear the input field after adding task
+	taskInput.value = '';
 };
 
 
 // Edit existing tasks 
 var editTask = function(){
-	console.log("Edit task..."); // just checking to see that this function is triggered for the right eventHandler
+	//console.log("Edit task..."); // just checking to see that this function is triggered for the right eventHandler
 	// When Edit button is pressed
+	var listItem = this.parentNode; 
+
+	var editInput = listItem.querySelector("input[type=text]"); // traverse and return first element
+	var label = listItem.querySelector("label");
+
 		// IF the parent class is .editMode
-			// switch from .editMode
-			// label text becomes the input's value
-		// ELSE
+	var containsClass = listItem.classList.contains("editMode");
+	if (containsClass) {
+		// switch from .editMode
+		// label text becomes the input's value
+		label.innerText = editInput.value;
+	}
+	else {
 			// switch to .editMode
 			// input value becomes the label's text
+		editInput.value = label.innerText;
+	}
 	// Toggle .editMode on the parent
+	listItem.classList.toggle("editMode");
 };
 
 // Delete tasks
@@ -82,7 +96,7 @@ var deleteTask = function(){
 
 // Mark tasks complete  
 var taskCompleted = function(){
-	console.log("Task completed..."); // just checking to see that this function is triggered for the right eventHandler
+//	console.log("Task completed..."); // just checking to see that this function is triggered for the right eventHandler
 	// when checkbox is ticked,
 		// append the task list item to #completed-tasks
 	var listItem = this.parentNode;
@@ -93,7 +107,7 @@ var taskCompleted = function(){
 
 // Mark tasks as incomplete 
 var taskIncomplete = function(){
-	console.log("Task incomplete..."); // just checking to see that this function is triggered for the right eventHandler
+//	console.log("Task incomplete..."); // just checking to see that this function is triggered for the right eventHandler
 	// when checkbox is UN-ticked,
 		// append the task list item to #incomplete-tasks
 	var listItem = this.parentNode;
